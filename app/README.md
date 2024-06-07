@@ -1,8 +1,12 @@
-# React + Vite
+# Prueba técnica frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Utilizando Angular y la siguiente API pública https://rickandmortyapi.com/ completa
+los siguientes pasos (puedes hacerlos en el orden que más te guste).
+1. Llama a la API y muestra los personajes (characters) en pantalla (puedes usar
+la maquetación que más te guste).
+2. Permitir editar los personajes. Para ello, abrir en un popup un formulario de
+edición para los campos de nombre (name), ubicación (location) y estado
+(status). Guarda estos nuevos datos sobre las variables (como no podemos
+hacer PUT sobre la API lo dejamos moqueado).
+3. Crea una tabla resumen de los 10 primeros personajes (solo los datos
+principales, sin imagen).
