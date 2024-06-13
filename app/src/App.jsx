@@ -37,7 +37,7 @@ function App() {
           setTotalPages(data.info.pages);
           console.log(totalPages)
         })
-        .catch((error) => alert("error to fetch", error));
+        .catch((error) => alert("error fetching data", error));
     } catch (error) {
       alert(error);
     }
@@ -61,10 +61,13 @@ function App() {
         <h1 className="text-3xl font-bold underline">
           Welcome to Rick and Morty!
         </h1>
-        <div className="flex justify-between mt-4">
+        <div className="flex justify-between items-center mt-4">
           <button onClick={prevPage} className={buttonClassName}>
             Prev
           </button>
+          <span className="text-xl font-bold">
+            {currentPage}/{totalPages}
+          </span>
           <button onClick={nextPage} className={buttonClassName}>
             Next
           </button>
