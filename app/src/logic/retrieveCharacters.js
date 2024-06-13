@@ -1,9 +1,9 @@
 
-function retrieveCharacters() {
-return fetch ('https://rickandmortyapi.com/api/character')
+function retrieveCharacters(page) {
+return fetch (`https://rickandmortyapi.com/api/character?page=${page}`)
 
 .then(response => response.json())
-.catch(error => alert('error to fetch', error))
+.catch(error => alert('error fetching data', error))
 }
 
 
