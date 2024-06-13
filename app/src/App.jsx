@@ -4,7 +4,7 @@ import CharactersList from "./components/CharactersList";
 import CharactersTable from "./components/CharactersTable";
 import EditCharacterForm from "./components/EditCharacterForm";
 
-import { buttonClassName } from "./styles"
+import { buttonClassName } from "./styles";
 
 import "./App.css";
 
@@ -16,50 +16,72 @@ export const useUpdatingCharacter = () => useContext(UpdatingCharacterContext);
 
 function App() {
   const [characters, setCharacters] = useState([]);
-
   const [updatingCharacter, setUpdatingCharacter] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
 
-  // estilos de los botones, se pueden exportar en un archivo suelto
-  // const buttonClassName = "bg-[#249D8C] text-white font-bold py-2 px-4 rounded";
 
   useEffect(() => {
+    loadCharacters();
+  }, [currentPage]);
+
+  console.log(currentPage);
+
+  const loadCharacters = () => {
+    //se ejecutará una vez cuando el componente se monte
     try {
       logic
-        .retrieveCharacters()
+        .retrieveCharacters(currentPage)
         .then((data) => {
-          setCharacters(data.results);
+          setCharacters(data.results); //Actualiza el estado con los datos recuperados
+          setTotalPages(data.info.pages);
+          console.log(totalPages)
         })
         .catch((error) => alert("error to fetch", error));
     } catch (error) {
       alert(error);
     }
-  }, []);
+  };
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const nextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
 
   return (
-    <>
-      <UpdatingCharacterContext.Provider value={{ setUpdatingCharacter }}>
-        <div>
-          <h1 className="text-3xl font-bold underline">
-            Welcome to Rick and Morty!
-          </h1>
-          <div className="flex justify-between mt-4">
-            <button className={buttonClassName}>Previous</button>
-            <button className={buttonClassName}>Next</button>
-          </div>
-          <CharactersList characters={characters} />
-
-          {updatingCharacter && (
-            <EditCharacterForm
-              characters={characters}
-              setCharacters={setCharacters}
-              character={updatingCharacter}
-            />
-          )}
-
-          <CharactersTable characters={characters} />
+    <UpdatingCharacterContext.Provider value={{ setUpdatingCharacter }}>
+      <div>
+        <h1 className="text-3xl font-bold underline">
+          Welcome to Rick and Morty!
+        </h1>
+        <div className="flex justify-between mt-4">
+          <button onClick={prevPage} className={buttonClassName}>
+            Prev
+          </button>
+          <button onClick={nextPage} className={buttonClassName}>
+            Next
+          </button>
         </div>
-      </UpdatingCharacterContext.Provider>
-    </>
+        <CharactersList 
+        characters={characters} />
+        {updatingCharacter && (
+          <EditCharacterForm
+            characters={characters}
+            setCharacters={setCharacters}
+            character={updatingCharacter}
+          />
+        )}
+        <CharactersTable 
+        characters={characters} />
+      </div>
+    </UpdatingCharacterContext.Provider>
   );
 }
 
