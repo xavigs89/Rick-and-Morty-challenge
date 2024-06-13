@@ -1,12 +1,10 @@
-# Prueba técnica frontend
+# React Frontend Technical Test
 
-Utilizando Angular y la siguiente API pública https://rickandmortyapi.com/ completa
-los siguientes pasos (puedes hacerlos en el orden que más te guste).
-1. Llama a la API y muestra los personajes (characters) en pantalla (puedes usar
-la maquetación que más te guste).
-2. Permitir editar los personajes. Para ello, abrir en un popup un formulario de
-edición para los campos de nombre (name), ubicación (location) y estado
-(status). Guarda estos nuevos datos sobre las variables (como no podemos
-hacer PUT sobre la API lo dejamos moqueado).
-3. Crea una tabla resumen de los 10 primeros personajes (solo los datos
-principales, sin imagen).
+Using React and the following public API https://rickandmortyapi.com/ , complete the following exercises:
+
+1. Call API and show the Rick and Morty's characters.
+2. Be able to edit characters, by opening an edit form with the parameters name, location, and status. Keep the new data mocked, as we cannot do PUT in API.
+3. Create a table, with a list of the 10 first characters (only main data, not images).
+4. Extend the current functionality to include pagination. Allow the user to navigate through different pages of characters.
+5. Implement a search bar to filter characters by name.
+6. Add filtering options to the characters list.
