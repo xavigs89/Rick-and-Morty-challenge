@@ -1,5 +1,7 @@
 import { useUpdatingCharacter } from "../App";
 
+import { buttonClassName } from "../styles";
+
 function CharactersCard({ character }) {
 
     const { setUpdatingCharacter } = useUpdatingCharacter()
@@ -15,7 +17,7 @@ function CharactersCard({ character }) {
 
             <img src={character.image} alt="" />
 
-            <button onClick={() => handleEditClick(character)} className="bg-[#249D8C] text-white font-bold py-2 px-4 rounded ">
+            <button onClick={() => handleEditClick(character)} className= {buttonClassName}>
                 Edit character
             </button>
         </div>
