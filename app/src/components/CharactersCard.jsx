@@ -1,6 +1,6 @@
 import { useUpdatingCharacter } from "../App";
 
-import { buttonClassName } from "../styles";
+import { mainButton } from "../styles";
 
 function CharactersCard({ character }) {
 
@@ -18,7 +18,7 @@ function CharactersCard({ character }) {
                 </div>
                 <div className="mt-auto">
                     <img src={character.image} alt="" className="mt-2 mb-4 rounded-md" />
-                    <button onClick={() => handleEditClick(character)} className={buttonClassName}>
+                    <button onClick={() => handleEditClick(character)} className={mainButton}>
                         Edit character
                     </button>
                 </div>
