@@ -1,10 +1,32 @@
+function retrieveCharacters(page, species, status, gender, name) {
+  let mainUrl = `https://rickandmortyapi.com/api/character?page=${page}`;
 
-function retrieveCharacters(page) {
-return fetch (`https://rickandmortyapi.com/api/character?page=${page}`)
+  if (species) {
+    mainUrl = mainUrl + `&species=${species}`;
+  }
 
-.then(response => response.json())
-.catch(error => alert('error fetching data', error))
+  if (status) {
+    mainUrl = mainUrl + `&status=${status}`;
+  }
+
+  if (gender) {
+    mainUrl = mainUrl + `&gender=${gender}`;
+  }
+
+  if (name) {
+    mainUrl = mainUrl + `&name=${name}`;
+  }
+
+  return fetch(mainUrl)
+    .then((response) => response.json())
+    .catch((error) => alert("error fetching data", error));
 }
 
+export default retrieveCharacters;
 
-export default retrieveCharacters
+//FUNCION ORIGINAL
+// function retrieveCharacters(page) {
+//     return fetch (`https://rickandmortyapi.com/api/character?page=${page}`)
+
+//     .then(response => response.json())
+//     .catch(error => alert('error fetching data', error))

@@ -4,7 +4,8 @@ import CharactersList from "./components/CharactersList";
 import CharactersTable from "./components/CharactersTable";
 import EditCharacterForm from "./components/EditCharacterForm";
 
-import { buttonClassName } from "./styles";
+import { mainButton, filterButton } from "./styles";
+
 
 import "./App.css";
 
@@ -20,16 +21,21 @@ function App() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [searchBar, setSearchBar] = useState("");
+  const [searchName, setSearchName] = useState("")
+  const [species, setSpecies] = useState("");
+  const [status, setStatus] = useState("");
+  const [gender, setGender] = useState("");
+
 
   useEffect(() => {
     loadCharacters();
-  }, [currentPage]);
+  }, [currentPage, species, status, gender, searchName]);
 
   const loadCharacters = () => {
     //se ejecutará una vez cuando el componente se monte
     try {
       logic
-        .retrieveCharacters(currentPage)
+        .retrieveCharacters(currentPage, species, status, gender, searchName)
         .then((data) => {
           setCharacters(data.results); //Actualiza el estado con los datos recuperados
           setTotalPages(data.info.pages);
@@ -53,16 +59,18 @@ function App() {
     }
   };
 
-  //SEARCH BAR
+  //SEARCH BAR BY NAME
   const handleSearchInput = (event) => {
+    event.preventDefault()
     setSearchBar(event.target.value);
+    setSearchName(event.target.value)
   };
+
 
   const filteredCharacters = characters.filter((character) =>
     character.name.toLowerCase().includes(searchBar.toLowerCase())
   );
 
-  
   return (
     <UpdatingCharacterContext.Provider value={{ setUpdatingCharacter }}>
       <div>
@@ -71,18 +79,19 @@ function App() {
         </h1>
 
         <div className="flex justify-between items-center mt-4">
-          <button onClick={prevPage} className={buttonClassName}>
+          <button onClick={prevPage} className={mainButton}>
             Prev
           </button>
           <span className="text-xl font-bold">
             {currentPage}/{totalPages}
           </span>
-          <button onClick={nextPage} className={buttonClassName}>
+          <button onClick={nextPage} className={mainButton}>
             Next
           </button>
         </div>
 
         <div className="flex justify-center mt-4">
+          {/* <form onSubmit={handleSearchSubmit}> */}
           <input
             className="p-2 border border-gray-400 rounded"
             type="text"
@@ -90,6 +99,40 @@ function App() {
             value={searchBar}
             onChange={handleSearchInput}
           />
+          {/* </form> */}
+        </div>
+
+        <div className="flex justify-center mt-4">
+          <select
+            className={filterButton}
+            value={species}
+            onChange={(e) => setSpecies(e.target.value)}
+          >
+            <option value="">All Species</option>
+            <option value="Human">Human</option>
+            <option value="Alien">Alien</option>
+          </select>
+          <select
+            className={filterButton}
+            value={status}
+            onChange={(e) => setStatus(e.target.value)}
+          >
+            <option value="">All Status</option>
+            <option value="Alive">Alive</option>
+            <option value="Dead">Dead</option>
+            <option value="unknown">Unknown</option>
+          </select>
+          <select
+            className={filterButton}
+            value={gender}
+            onChange={(e) => setGender(e.target.value)}
+          >
+            <option value="">All Genders</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Genderless">Genderless</option>
+            <option value="unknown">Unknown</option>
+          </select>
         </div>
 
         <CharactersList characters={filteredCharacters} />
