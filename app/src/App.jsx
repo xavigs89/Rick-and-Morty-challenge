@@ -21,19 +21,21 @@ function App() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [searchBar, setSearchBar] = useState("");
+  const [searchName, setSearchName] = useState("")
   const [species, setSpecies] = useState("");
   const [status, setStatus] = useState("");
   const [gender, setGender] = useState("");
 
+
   useEffect(() => {
     loadCharacters();
-  }, [currentPage, species, status, gender]);
+  }, [currentPage, species, status, gender, searchName]);
 
   const loadCharacters = () => {
     //se ejecutará una vez cuando el componente se monte
     try {
       logic
-        .retrieveCharacters(currentPage, species, status, gender)
+        .retrieveCharacters(currentPage, species, status, gender, searchName)
         .then((data) => {
           setCharacters(data.results); //Actualiza el estado con los datos recuperados
           setTotalPages(data.info.pages);
@@ -57,10 +59,13 @@ function App() {
     }
   };
 
-  //SEARCH BAR
+  //SEARCH BAR BY NAME
   const handleSearchInput = (event) => {
+    event.preventDefault()
     setSearchBar(event.target.value);
+    setSearchName(event.target.value)
   };
+
 
   const filteredCharacters = characters.filter((character) =>
     character.name.toLowerCase().includes(searchBar.toLowerCase())
@@ -86,6 +91,7 @@ function App() {
         </div>
 
         <div className="flex justify-center mt-4">
+          {/* <form onSubmit={handleSearchSubmit}> */}
           <input
             className="p-2 border border-gray-400 rounded"
             type="text"
@@ -93,6 +99,7 @@ function App() {
             value={searchBar}
             onChange={handleSearchInput}
           />
+          {/* </form> */}
         </div>
 
         <div className="flex justify-center mt-4">

@@ -1,4 +1,4 @@
-function retrieveCharacters(page, species, status, gender) {
+function retrieveCharacters(page, species, status, gender, name) {
   let mainUrl = `https://rickandmortyapi.com/api/character?page=${page}`;
 
   if (species) {
@@ -11,6 +11,10 @@ function retrieveCharacters(page, species, status, gender) {
 
   if (gender) {
     mainUrl = mainUrl + `&gender=${gender}`;
+  }
+
+  if (name) {
+    mainUrl = mainUrl + `&name=${name}`;
   }
 
   return fetch(mainUrl)
