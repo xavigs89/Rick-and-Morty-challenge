@@ -8,3 +8,8 @@ Using React and the following public API https://rickandmortyapi.com/ , complete
 4. Extend the current functionality to include pagination. Allow the user to navigate through different pages of characters.
 5. Implement a search bar to filter characters by name.
 6. Add filtering options to the characters list.
+7. Add unit tests using Jest.
+8. Add details page for each character, displaying Location (name, type, dimension, amount of residents) and Episodes (episode name, air date).
+9. Add an a page that displays a paginated list of Episodes.
+10. Add a a page that displays a paginated list of Locations.
+11. Add a navigation menu to access 3 different pages (/characters, /locations, /episodes)
