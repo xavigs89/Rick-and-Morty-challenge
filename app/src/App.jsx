@@ -12,12 +12,15 @@ import "./App.css";
 import logic from "./logic";
 
 const UpdatingCharacterContext = createContext(null);
-
 export const useUpdatingCharacter = () => useContext(UpdatingCharacterContext);
+
+// const DetailsFormContext = createContext(null)
+// export const useDetailsForm = () => useContext(DetailsFormContext)
 
 function App() {
   const [characters, setCharacters] = useState([]);
   const [updatingCharacter, setUpdatingCharacter] = useState(null);
+  // const [detailsCharacter, setDetailsCharacter] = useState(null)
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [searchBar, setSearchBar] = useState("");
@@ -73,6 +76,7 @@ function App() {
 
   return (
     <UpdatingCharacterContext.Provider value={{ setUpdatingCharacter }}>
+      {/* <DetailsFormContext.Provider value= {{ setDetailsCharacter}}> */}
       <div>
         <h1 className="text-3xl font-bold underline">
           Welcome to Rick and Morty!
@@ -106,7 +110,7 @@ function App() {
           <select
             className={filterButton}
             value={species}
-            onChange={(e) => setSpecies(e.target.value)}
+            onChange={(event) => setSpecies(event.target.value)}
           >
             <option value="">All Species</option>
             <option value="Human">Human</option>
@@ -115,7 +119,7 @@ function App() {
           <select
             className={filterButton}
             value={status}
-            onChange={(e) => setStatus(e.target.value)}
+            onChange={(event) => setStatus(event.target.value)}
           >
             <option value="">All Status</option>
             <option value="Alive">Alive</option>
@@ -125,7 +129,7 @@ function App() {
           <select
             className={filterButton}
             value={gender}
-            onChange={(e) => setGender(e.target.value)}
+            onChange={(event) => setGender(event.target.value)}
           >
             <option value="">All Genders</option>
             <option value="Male">Male</option>
@@ -145,6 +149,7 @@ function App() {
         )}
         <CharactersTable characters={filteredCharacters} />
       </div>
+      {/* </DetailsFormContext.Provider> */}
     </UpdatingCharacterContext.Provider>
   );
 }
