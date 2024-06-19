@@ -1,13 +1,11 @@
 import { useState, useEffect, useContext, createContext } from "react";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import React from "react";
 import CharactersList from "./components/CharactersList";
 import CharactersTable from "./components/CharactersTable";
 import EditCharacterForm from "./components/EditCharacterForm";
 
 import { mainButton, filterButton } from "./styles";
-
-
-import "./App.css";
 
 import logic from "./logic";
 
@@ -24,11 +22,10 @@ function App() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [searchBar, setSearchBar] = useState("");
-  const [searchName, setSearchName] = useState("")
+  const [searchName, setSearchName] = useState("");
   const [species, setSpecies] = useState("");
   const [status, setStatus] = useState("");
   const [gender, setGender] = useState("");
-
 
   useEffect(() => {
     loadCharacters();
@@ -64,11 +61,10 @@ function App() {
 
   //SEARCH BAR BY NAME
   const handleSearchInput = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     setSearchBar(event.target.value);
-    setSearchName(event.target.value)
+    setSearchName(event.target.value);
   };
-
 
   const filteredCharacters = characters.filter((character) =>
     character.name.toLowerCase().includes(searchBar.toLowerCase())
@@ -78,32 +74,30 @@ function App() {
     <UpdatingCharacterContext.Provider value={{ setUpdatingCharacter }}>
       {/* <DetailsFormContext.Provider value= {{ setDetailsCharacter}}> */}
       <div>
-        <h1 className="text-3xl font-bold underline">
-          Welcome to Rick and Morty!
+        <h1 className="text-3xl font-bold underline text-center mt-6">
+          Welcome to Rick and Morty App!
         </h1>
-
-        <div className="flex justify-between items-center mt-4">
+        {/* {" "} */}
+        <div className="flex justify-center items-center mt-6 space-x-4">
           <button onClick={prevPage} className={mainButton}>
             Prev
           </button>
-          <span className="text-xl font-bold">
-            {currentPage}/{totalPages}
-          </span>
-          <button onClick={nextPage} className={mainButton}>
-            Next
-          </button>
-        </div>
-
-        <div className="flex justify-center mt-4">
-          {/* <form onSubmit={handleSearchSubmit}> */}
           <input
-            className="p-2 border border-gray-400 rounded"
+            className="p-2 border border-gray-400 rounded text-center"
             type="text"
             placeholder="Search characters..."
             value={searchBar}
             onChange={handleSearchInput}
           />
-          {/* </form> */}
+          <button onClick={nextPage} className={mainButton}>
+            Next
+          </button>
+        </div>
+
+        <div className="flex justify-center mt-2">
+          <span className="text-xl font-bold">
+            {currentPage}/{totalPages}
+          </span>
         </div>
 
         <div className="flex justify-center mt-4">
