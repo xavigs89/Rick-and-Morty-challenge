@@ -9,6 +9,7 @@ import EditCharacterForm from "../components/EditCharacterForm";
 import Pagination from "../components/Pagination";
 import SearchBar from "../components/SearchBar";
 import Filters from "../components/Filters";
+import CharacterDetailsCard from "../components/CharacterDetailsCard";
 
 import logic from "../logic";
 
