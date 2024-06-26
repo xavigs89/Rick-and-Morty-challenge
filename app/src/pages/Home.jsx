@@ -1,13 +1,14 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
+
+import { useUpdatingCharacter } from "../App";
+
 import CharactersList from "../components/CharactersList";
 import CharactersTable from "../components/CharactersTable";
 import EditCharacterForm from "../components/EditCharacterForm";
 
-import { useUpdatingCharacter } from "../App";
-
+import { mainButton, filterButton } from "../styles";
 import logic from "../logic";
 
-import { mainButton, filterButton } from "../styles";
 
 function Home() {
   const [characters, setCharacters] = useState([]);
