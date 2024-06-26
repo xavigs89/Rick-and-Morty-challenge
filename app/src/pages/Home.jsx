@@ -6,9 +6,11 @@ import CharactersList from "../components/CharactersList";
 import CharactersTable from "../components/CharactersTable";
 import EditCharacterForm from "../components/EditCharacterForm";
 
-import { mainButton, filterButton } from "../styles";
-import logic from "../logic";
+import Pagination from "../components/Pagination";
+import SearchBar from "../components/SearchBar";
+import Filters from "../components/Filters";
 
+import logic from "../logic";
 
 function Home() {
   const [characters, setCharacters] = useState([]);
@@ -67,65 +69,29 @@ function Home() {
   );
 
   return (
-    <div>
+    <div className="flex flex-col items-center space-y-4">
       <h1 className="text-3xl font-bold underline text-center mt-6">
         Welcome to Rick and Morty App!
       </h1>
       {/* {" "} */}
-      <div className="flex justify-center items-center mt-6 space-x-4">
-        <button onClick={prevPage} className={mainButton}>
-          Prev
-        </button>
-        <input
-          className="p-2 border border-gray-400 rounded text-center"
-          type="text"
-          placeholder="Search characters..."
-          value={searchBar}
-          onChange={handleSearchInput}
-        />
-        <button onClick={nextPage} className={mainButton}>
-          Next
-        </button>
-      </div>
 
-      <div className="flex justify-center mt-2">
-        <span className="text-xl font-bold">
-          {currentPage}/{totalPages}
-        </span>
-      </div>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        prevPage={prevPage}
+        nextPage={nextPage}
+      />
 
-      <div className="flex justify-center mt-4">
-        <select
-          className={filterButton}
-          value={species}
-          onChange={(event) => setSpecies(event.target.value)}
-        >
-          <option value="">All Species</option>
-          <option value="Human">Human</option>
-          <option value="Alien">Alien</option>
-        </select>
-        <select
-          className={filterButton}
-          value={status}
-          onChange={(event) => setStatus(event.target.value)}
-        >
-          <option value="">All Status</option>
-          <option value="Alive">Alive</option>
-          <option value="Dead">Dead</option>
-          <option value="unknown">Unknown</option>
-        </select>
-        <select
-          className={filterButton}
-          value={gender}
-          onChange={(event) => setGender(event.target.value)}
-        >
-          <option value="">All Genders</option>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-          <option value="Genderless">Genderless</option>
-          <option value="unknown">Unknown</option>
-        </select>
-      </div>
+      <SearchBar searchBar={searchBar} handleSearchInput={handleSearchInput} />
+
+      <Filters
+        species={species}
+        setSpecies={setSpecies}
+        status={status}
+        setStatus={setStatus}
+        gender={gender}
+        setGender={setGender}
+      />
 
       <CharactersList characters={filteredCharacters} />
       {updatingCharacter && (
@@ -135,6 +101,7 @@ function Home() {
           character={updatingCharacter}
         />
       )}
+
       <CharactersTable characters={filteredCharacters} />
     </div>
   );

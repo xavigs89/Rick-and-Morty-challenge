@@ -2,7 +2,7 @@ function CharactersTable({ characters }) {
   const firstTenCharacters = characters.slice(0, 10);
 
   return (
-    <section className="text-center">
+    <section className="text-center mt-6">
       <h2 className="text-xl font-bold mb-4 underline">
         Rick and Morty characters
       </h2>
