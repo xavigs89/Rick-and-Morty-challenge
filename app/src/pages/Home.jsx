@@ -13,6 +13,8 @@ import CharacterDetailsCard from "../components/CharacterDetailsCard";
 
 import logic from "../logic";
 
+// import backgroundImage from "../assets/rick and morty wallpaper.png"
+
 function Home() {
   const [characters, setCharacters] = useState([]);
   const { updatingCharacter, setUpdatingCharacter } = useUpdatingCharacter();
@@ -70,8 +72,8 @@ function Home() {
   );
 
   return (
-    <div className="flex flex-col items-center space-y-4">
-      <h1 className="text-3xl font-bold underline text-center mt-6">
+    <div className="min-h-screen bg-cover bg-center flex flex-col items-center space-y-4 bg-sky-950">
+      <h1 className="text-3xl font-bold underline text-center mt-6 text-white">
         Welcome to Rick and Morty App!
       </h1>
       {/* {" "} */}
