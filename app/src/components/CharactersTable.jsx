@@ -2,11 +2,11 @@ function CharactersTable({ characters }) {
   const firstTenCharacters = characters.slice(0, 10);
 
   return (
-    <section className="text-center">
-      <h2 className="text-xl font-bold mb-4 underline">
+    <section className="text-center mt-6">
+      <h2 className="text-xl font-bold mb-4 underline text-white">
         Rick and Morty characters
       </h2>
-      <table className="mx-auto border-collapse border border-gray-300 shadow-md rounded-lg overflow-hidden">
+      <table className="mx-auto border-collapse border border-gray-300 shadow-md rounded-lg overflow-hidden bg-white">
         <thead className="bg-[#249D8C] text-white">
           <tr>
             <th className="border border-gray-300 px-4 py-2">Name</th>
