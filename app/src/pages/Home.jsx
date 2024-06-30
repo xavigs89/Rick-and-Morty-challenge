@@ -9,21 +9,19 @@ import EditCharacterForm from "../components/EditCharacterForm";
 import Pagination from "../components/Pagination";
 import SearchBar from "../components/SearchBar";
 import Filters from "../components/Filters";
-import CharacterDetailsCard from "../components/CharacterDetailsCard";
 
 import logic from "../logic";
-
-// import backgroundImage from "../assets/rick and morty wallpaper.png"
 
 function Home() {
   const [characters, setCharacters] = useState([]);
   const { updatingCharacter, setUpdatingCharacter } = useUpdatingCharacter();
 
-  // const [detailsCharacter, setDetailsCharacter] = useState(null)
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
+
   const [searchBar, setSearchBar] = useState("");
   const [searchName, setSearchName] = useState("");
+
   const [species, setSpecies] = useState("");
   const [status, setStatus] = useState("");
   const [gender, setGender] = useState("");
@@ -47,19 +45,6 @@ function Home() {
     }
   };
 
-  //PAGINATION
-  const prevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
-
-  const nextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-
   //SEARCH BAR BY NAME
   const handleSearchInput = (event) => {
     event.preventDefault();
@@ -76,16 +61,17 @@ function Home() {
       <h1 className="text-3xl font-bold underline text-center mt-6 text-white">
         Welcome to Rick and Morty App!
       </h1>
-      {/* {" "} */}
 
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
-        prevPage={prevPage}
-        nextPage={nextPage}
+        setCurrentPage={setCurrentPage}
       />
 
-      <SearchBar searchBar={searchBar} handleSearchInput={handleSearchInput} />
+      <SearchBar 
+        searchBar={searchBar} 
+        handleSearchInput={handleSearchInput} 
+        />
 
       <Filters
         species={species}
@@ -105,7 +91,9 @@ function Home() {
         />
       )}
 
-      <CharactersTable characters={filteredCharacters} />
+      <CharactersTable 
+        characters={filteredCharacters} 
+      />
     </div>
   );
 }
