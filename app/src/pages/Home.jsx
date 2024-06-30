@@ -16,12 +16,15 @@ function Home() {
   const [characters, setCharacters] = useState([]);
   const { updatingCharacter, setUpdatingCharacter } = useUpdatingCharacter();
 
+  //PAGINATION
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
 
+  //SEARCH BAR
   const [searchBar, setSearchBar] = useState("");
   const [searchName, setSearchName] = useState("");
 
+  //FILTERS
   const [species, setSpecies] = useState("");
   const [status, setStatus] = useState("");
   const [gender, setGender] = useState("");
@@ -45,13 +48,7 @@ function Home() {
     }
   };
 
-  //SEARCH BAR BY NAME
-  const handleSearchInput = (event) => {
-    event.preventDefault();
-    setSearchBar(event.target.value);
-    setSearchName(event.target.value);
-  };
-
+  
   const filteredCharacters = characters.filter((character) =>
     character.name.toLowerCase().includes(searchBar.toLowerCase())
   );
@@ -70,7 +67,8 @@ function Home() {
 
       <SearchBar 
         searchBar={searchBar} 
-        handleSearchInput={handleSearchInput} 
+        setSearchBar={setSearchBar} 
+        setSearchName={setSearchName}
         />
 
       <Filters
