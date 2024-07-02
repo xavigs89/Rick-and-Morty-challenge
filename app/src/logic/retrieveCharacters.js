@@ -30,3 +30,7 @@ export default retrieveCharacters;
 
 //     .then(response => response.json())
 //     .catch(error => alert('error fetching data', error))
+
+
+// FUNCION REFACTORIZADA
+//  let mainUrl = `https://rickandmortyapi.com/api/character?page=${page}&name=${search}&status=${status}&species=${species}&gender=${gender}`;
