@@ -4,6 +4,7 @@ import React from "react";
 
 import Home from "./pages/Home";
 import CharacterDetailsCard from "./components/CharacterDetailsCard";
+import Episodes from "./pages/Episodes";
 
 const UpdatingCharacterContext = createContext(null);
 export const useUpdatingCharacter = () => useContext(UpdatingCharacterContext);
@@ -18,6 +19,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/character/:id" element={<CharacterDetailsCard />} />
+        <Route path="/episodes" element={<Episodes />} />
       </Routes>
     </UpdatingCharacterContext.Provider>
   );
