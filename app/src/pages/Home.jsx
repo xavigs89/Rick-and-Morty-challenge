@@ -10,6 +10,9 @@ import Pagination from "../components/Pagination";
 import SearchBar from "../components/SearchBar";
 import Filters from "../components/Filters";
 
+import Episodes from "./Episodes";
+import NavBar from "../components/NavBar";
+
 import logic from "../logic";
 
 function Home() {
@@ -58,7 +61,9 @@ function Home() {
       <h1 className="text-3xl font-bold underline text-center mt-6 text-white">
         Welcome to Rick and Morty App!
       </h1>
+<NavBar
 
+/>
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
