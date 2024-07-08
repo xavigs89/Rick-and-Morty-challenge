@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-
 import { useUpdatingCharacter } from "../App";
 
 import CharactersList from "../components/CharactersList";
@@ -9,9 +8,6 @@ import EditCharacterForm from "../components/EditCharacterForm";
 import Pagination from "../components/Pagination";
 import SearchBar from "../components/SearchBar";
 import Filters from "../components/Filters";
-
-import Episodes from "./Episodes";
-import NavBar from "../components/NavBar";
 
 import logic from "../logic";
 
@@ -51,30 +47,26 @@ function Home() {
     }
   };
 
-  
   const filteredCharacters = characters.filter((character) =>
     character.name.toLowerCase().includes(searchBar.toLowerCase())
   );
 
   return (
     <div className="min-h-screen bg-cover bg-center flex flex-col items-center space-y-4 bg-sky-950">
-      <h1 className="text-3xl font-bold underline text-center mt-6 text-white">
-        Welcome to Rick and Morty App!
+      <h1 className="text-3xl font-bold underline text-center text-white">
+        Characters
       </h1>
-<NavBar
-
-/>
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
         setCurrentPage={setCurrentPage}
       />
 
-      <SearchBar 
-        searchBar={searchBar} 
-        setSearchBar={setSearchBar} 
+      <SearchBar
+        searchBar={searchBar}
+        setSearchBar={setSearchBar}
         setSearchName={setSearchName}
-        />
+      />
 
       <Filters
         species={species}
@@ -94,9 +86,7 @@ function Home() {
         />
       )}
 
-      <CharactersTable 
-        characters={filteredCharacters} 
-      />
+      <CharactersTable characters={filteredCharacters} />
     </div>
   );
 }
