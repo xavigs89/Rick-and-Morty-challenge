@@ -1,6 +1,5 @@
 import { useUpdatingCharacter } from "../App"
 
-
 function EditCharacterForm({ character, characters, setCharacters }) {
 
     const { setUpdatingCharacter } = useUpdatingCharacter()

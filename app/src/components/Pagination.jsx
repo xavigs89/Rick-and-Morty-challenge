@@ -15,7 +15,7 @@ function Pagination({ currentPage, totalPages, setCurrentPage }) {
   };
 
   return (
-    <div className="flex place-content-evenly items-center mt-6 space x-4">
+    <div className="flex place-content-evenly items-center mt-6 space x-4 space-x-4">
       <button onClick={prevPage} className={mainButton} disabled={currentPage === 1}>
         Prev
       </button>

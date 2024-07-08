@@ -1,10 +1,11 @@
 import { useContext, createContext, useState } from "react";
-import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import React from "react";
 
 import Home from "./pages/Home";
-import CharacterDetailsCard from "./components/CharacterDetailsCard";
+import NavBar from "./components/NavBar";
 import Episodes from "./pages/Episodes";
+import CharacterDetailsCard from "./components/CharacterDetailsCard";
 
 const UpdatingCharacterContext = createContext(null);
 export const useUpdatingCharacter = () => useContext(UpdatingCharacterContext);
@@ -16,11 +17,14 @@ function App() {
     <UpdatingCharacterContext.Provider
       value={{ updatingCharacter, setUpdatingCharacter }}
     >
+      <div className="min-h-screen bg-cover bg-center flex flex-col items-center space-y-4 bg-sky-950">
+      <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/character/:id" element={<CharacterDetailsCard />} />
         <Route path="/episodes" element={<Episodes />} />
       </Routes>
+      </div>
     </UpdatingCharacterContext.Provider>
   );
 }

@@ -1,20 +1,26 @@
 import { Link, NavLink } from "react-router-dom";
-import React from "react";
+import { mainButton } from "../styles";
+
 
 function NavBar() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light mb-4">
-      <div className="container">
-        <Link to="/" className="navbar-brand fs-3 ubuntu">
-          <h1 className="text-primary text-white">Rick & Morty App</h1>
+    <nav className="w-full bg-light mb-4 relative">
+      <div className="flex justify-between items-center w-full px-4 mt-6">
+        <Link to="/" className={`${mainButton} ml-24`}>
+          Home
         </Link>
-
-        <div className="navbar-nav fs-5 text-white">
-          <NavLink to="/" className="nav-link">
+        <h1 className="text-3xl font-bold text-white absolute left-1/2 transform -translate-x-1/2">
+        Welcome to Rick and Morty App
+      </h1>
+        <div className="flex space-x-4">
+          <NavLink to="/" className={mainButton}>
             Characters
           </NavLink>
-          <NavLink to="/episodes" className="nav-link">
+          <NavLink to="/episodes" className={mainButton}>
             Episodes
+          </NavLink>
+          <NavLink to="/location" className={mainButton}>
+          Location
           </NavLink>
         </div>
       </div>

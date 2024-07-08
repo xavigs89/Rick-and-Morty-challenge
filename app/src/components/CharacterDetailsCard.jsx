@@ -1,16 +1,13 @@
-import { useParams, useNavigate } from "react-router-dom";
-
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+
 import logic from "../logic";
-import { mainButton } from "../styles";
 
 function CharacterDetailsCard() {
   const { id } = useParams();
   const [character, setCharacter] = useState(null);
   const [location, setLocation] = useState(null);
   const [episodes, setEpisodes] = useState([]);
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     logic
@@ -33,11 +30,8 @@ function CharacterDetailsCard() {
     <article className="min-h-screen bg-cover bg-center flex flex-col items-center space-y-4 bg-sky-950">
       <div className="text-center ">
         <div className="mt-4 text-left">
-          <button onClick={() => navigate("/")} className={mainButton}>
-            Go Back
-          </button>
         </div>
-        <h1 className="text-xl font-bold mb-4 underline text-white">
+        <h1 className="text-3xl font-bold mb-4 underline text-white">
           {character.name} Details
         </h1>
         <div className="mx-auto max-w-2xl border border-gray-300 shadow-md rounded-lg p-4 bg-white">
@@ -59,7 +53,7 @@ function CharacterDetailsCard() {
             {episodes.map((episode) => (
               <li key={episode.id}>
                 <p>
-                  <strong>Episodes Name:</strong> {episode.name}
+                  <strong>Episode Name:</strong> {episode.name}
                 </p>
                 <p>
                   <strong>Air Date:</strong> {episode.air_date}

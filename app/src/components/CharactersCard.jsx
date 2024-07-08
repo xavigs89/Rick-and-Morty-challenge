@@ -6,7 +6,6 @@ function CharactersCard({ character }) {
   const navigate = useNavigate();
   const { setUpdatingCharacter } = useUpdatingCharacter();
   const handleEditClick = () => setUpdatingCharacter(character);
-  // const { setDetailsCharacter } = useDetailsCharacter();
   const handleDetailsClick = () => {
     navigate(`/character/${character.id}`);
   };
