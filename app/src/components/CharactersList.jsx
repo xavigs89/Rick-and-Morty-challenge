@@ -1,4 +1,3 @@
-
 import CharactersCard from "./CharactersCard"
 
 function CharactersList({ characters }) {

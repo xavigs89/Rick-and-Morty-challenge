@@ -1,4 +1,4 @@
-function retrieveCharacterDetails(id, character, location, episodes) {
+function retrieveCharacterDetails(id) {
   const characterUrl = `https://rickandmortyapi.com/api/character/${id}`;
 
   return fetch(characterUrl)

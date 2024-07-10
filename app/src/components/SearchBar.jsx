@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 
 function SearchBar({ searchBar, setSearchBar, setSearchName }) {
   const handleSearchInput = (event) => {
@@ -7,11 +6,9 @@ function SearchBar({ searchBar, setSearchBar, setSearchName }) {
     setSearchName(event.target.value);
   };
 
-  
-
   return (
     <input
-      className="p-2 border border-gray-400 rounded text-center"
+      className="p-2 border border-gray-400 rounded text-center w-96"
       type="text"
       placeholder="Search characters..."
       value={searchBar}

@@ -4,7 +4,7 @@ function CharactersTable({ characters }) {
   return (
     <section className="text-center mt-6">
       <h2 className="text-xl font-bold mb-4 underline text-white">
-        Rick and Morty characters
+        Rick and Morty characters table
       </h2>
       <table className="mx-auto border-collapse border border-gray-300 shadow-md rounded-lg overflow-hidden bg-white">
         <thead className="bg-[#249D8C] text-white">
