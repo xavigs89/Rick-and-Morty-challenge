@@ -1,13 +1,13 @@
-import retrieveCharacterDetails from './retrieveCharacterDetails'
-import retrieveCharacters from './retrieveCharacters'
-import retrieveEpisodes from './retrieveEpisodes'
+import retrieveCharacterDetails from "./retrieveCharacterDetails";
+import retrieveCharacters from "./retrieveCharacters";
+import retrieveEpisodes from "./retrieveEpisodes";
+import retrieveLocation from "./retrieveLocation";
 
 const logic = {
+  retrieveCharacters,
+  retrieveCharacterDetails,
+  retrieveEpisodes,
+  retrieveLocation,
+};
 
-retrieveCharacters,
-retrieveCharacterDetails,
-retrieveEpisodes
-
-}
-
-export default logic
+export default logic;
