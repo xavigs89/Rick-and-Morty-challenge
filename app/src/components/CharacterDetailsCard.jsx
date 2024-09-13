@@ -35,6 +35,9 @@ function CharacterDetailsCard() {
           {character.name} Details
         </h1>
         <div className="mx-auto max-w-2xl border border-gray-300 shadow-md rounded-lg p-4 bg-white">
+        <div className="flex justify-center mt-2 mb-4">
+            <img src={character.image} alt="" className="rounded-md" />
+          </div>
           <h3 className="text-lg font-bold underline">Location</h3>
           <p>
             <strong>Location Name:</strong> {location.name}
